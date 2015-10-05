@@ -1,0 +1,19 @@
+{
+	"name": "violet-light-theme",
+	"title": "Violet Light Theme",
+	"description": "A light theme",
+	"version": "1.0.0",
+	"author": "Tzuyang Tsai",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/shiyou0130011/violet-light-theme.git"
+	},
+	"homepage": "https://github.com/shiyou0130011/violet-light-theme",
+    	"theme": {
+		"file": "theme.less",
+        	"dark": false,
+		"addModeClass": true
+	},
+	"keywords": ["theme", "purple", "violet", "light"]
+}

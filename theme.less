@@ -1,0 +1,331 @@
+/* 
+ * Violet light Theme
+ * @author Tzuyang Tsai (https://github.com/shiyou0130011)
+ * @listence MIT
+ */
+
+/*
+ * Define colors
+ */
+@background:	hsl(265, 43%, 90%);
+@panelheader:	hsla(254, 32%, 19%, 0.77);
+@normal-text:	hsl(228, 64%, 18%);
+
+@left-bar:	hsl(274, 38%, 39%);
+@keyword:	hsl(219, 91%, 70%);
+@variable-name:	hsl(259, 43%, 49%);
+@property:	hsl(272, 71%, 35%);
+@variable:	hsl(222, 41%, 28%);
+@alert:		firebrick;
+@comment:	hsl(0, 32%, 60%);
+@foldgutter:	hsl(274, 38%, 45%);
+@string:	rgb(58, 124, 124);
+
+@hover-text:	hsl(256, 50%, 78%);
+@hover-background:hsl(256, 50%, 44%);
+@selected-background:hsl(210, 100%, 81%);
+@selected-background-2:hsl(210, 100%, 90%);
+
+.CodeMirror, .CodeMirror-scroll {
+	background-color: @background;
+	color: @normal-text;
+}
+
+.CodeMirror-focused .CodeMirror-activeline-background {
+	background: #5716d3;
+}
+
+.show-line-padding .CodeMirror-focused .CodeMirror-activeline-background {
+	box-shadow: inset 15px 0 0 0 #000;
+}
+
+.CodeMirror-focused .CodeMirror-activeline {
+	.CodeMirror-gutter-elt {
+		background: rgba(0, 0, 0, 0.2);
+		color: #fff;
+	}
+	.inline-widget .CodeMirror-gutter-elt {
+		color: #aaa;	
+	}
+}
+
+.cm-atom, .cm-attribute, .cm-string-2, .cm-hr {
+	color: @variable;
+}
+.cm-string{
+	color: @string;
+}
+
+.cm-attribute{
+	color: @property;
+	font-weight: bold;
+}
+.cm-number, .cm-plus {
+	color: deeppink;
+}
+.cm-property {
+	color: @property;
+	font-weight: bolder;
+}
+.cm-def, .cm-variable{
+	color: @variable-name;
+}
+.cm-variable-2, .cm-variable-3, .cm-operator, .cm-meta, .cm-bracket {
+	color: @normal-text;
+}
+.cm-comment {
+	color: @comment;
+	font-style: oblique;
+	font-family: cursive;	
+	text-shadow: 1px 1px 1px hsl(245, 100%, 98%);
+}
+.CodeMirror-foldmarker, .cm-comment{
+	color: @comment !important;
+}
+
+.cm-error, .cm-minus {
+	color: @alert;
+}
+
+.cm-header {
+	color: #d85896;
+}
+.cm-link {
+	color: hsl(217, 85%, 33%);
+	text-decoration: none;
+	border-bottom: 1px dotted;
+}
+.cm-rangeinfo {
+	color: #6c71c4;
+}
+.cm-keyword, .cm-qualifier, .cm-builtin, .cm-tag, .cm-quote {
+	color: @keyword;
+}
+
+/* 
+ * Extra CSS
+ * *************************************/ 
+
+.CodeMirror-searching {
+	background-color: hsl(247, 68%, 22%);
+	color: aliceblue !important;
+	&.searching-current-match {
+		background-color: hsl(247, 80%, 90%);
+		color: @normal-text !important;
+	}
+}
+
+.CodeMirror-cursor {
+	border-left: 1px solid #c5c8c6 !important;
+}
+
+.CodeMirror-gutters {
+	background-color: @background;
+	border-right: none;
+}
+
+.CodeMirror-linenumber {
+	color: @left-bar;
+	font-size: .8em;
+	font-family: cursive;
+	font-style: italic;
+	vertical-align: middle;
+}
+.CodeMirror-linenumber:after{
+	content: ".";
+}
+
+.CodeMirror .CodeMirror-selected {
+	// 不是主要開啟檔案的選擇區
+	background: @selected-background-2;
+}
+.CodeMirror-focused .CodeMirror-selected {
+	background: @selected-background;
+}
+
+.CodeMirror-matchingbracket, .CodeMirror-matchingtag {
+	/*  editor's “{” & “}” background */
+	background-color: rebeccapurple;
+	color: hsl(254, 24%, 71%) !important;
+}
+
+.CodeMirror-overwrite .CodeMirror-cursor {
+	border-left: none !important;
+	border-bottom: 1px solid #fff;
+}
+
+
+/* 
+ * panel
+ * *************************************/
+.view-pane{
+	&.active-pane{
+		.pane-header{
+			color: aliceblue;
+			font-weight: bold;
+		}
+	}
+	.pane-header{
+		background: @panelheader;
+		border-bottom: 1px solid white;
+		em{
+			color: mintcream;
+		}
+	}
+}
+
+/*
+	CodeMirror's use of descendant selectors for certain styling causes problems when editors are
+	nested because, for items in the inner editor, the left-hand clause in the selector will now
+	match either the actual containing CodeMirror instance *OR* the outer "host" CodeMirror instance.
+	TODO (issue #324): We'll still have problems if editors can be nested more than one level deep,
+	or if any other descendant-selector-driven CM styles can differ between inner & outer editors
+	(potential problem areas include line wrap and coloring theme: basically, anything in codemirror.css
+	that uses a descandant selector where the CSS class name to the left of the space is something
+	other than a vanilla .CodeMirror)
+ */
+.CodeMirror {
+	.CodeMirror {
+		background: transparent;
+	}
+
+	.CodeMirror .CodeMirror-gutters {
+		background: transparent;
+		border-right: none;
+	}
+
+	.CodeMirror .CodeMirror-activeline-background {
+		background: transparent;
+	}
+
+	.CodeMirror .CodeMirror-activeline .CodeMirror-gutter-elt {
+		background: transparent;
+		color: #767676;
+	}
+
+	.CodeMirror-focused .CodeMirror-activeline-background {
+		background: #2f2f2f;
+	}
+
+	.CodeMirror-focused .CodeMirror-activeline {
+		.CodeMirror-gutter-elt {
+			background: rgba(0, 0, 0, 0.2);
+			color: gainsboro;
+		}
+	}
+	
+}
+
+.CodeMirror-foldgutter-open:after {
+	color: @foldgutter;
+}
+.CodeMirror-foldgutter-folded:after {
+	color: @foldgutter;
+}
+
+.CodeMirror.over-gutter, .CodeMirror-activeline {
+	.CodeMirror-foldgutter-open:after {
+		color: @foldgutter;
+	}
+}
+
+.CodeMirror-foldmarker {
+	// the ... of  folded 
+	border-color: transparent;
+	color: @normal-text;
+	font-weight: bolder;
+	background-color: transparent;
+}
+
+.quick-view-highlight{
+	background-color: @hover-background;
+	color: @hover-text !important;
+	font-weight: normal !important;
+	
+}
+
+/* 
+ * for each language
+ * *************************************/
+.cm-m-clike {
+	/* PHP, C, C++, java ... etc */
+	&.cm-variable-3{
+		// like int, double ... etc
+	}
+	&.cm-def{
+		//like "main" ...etc
+	}
+	&.cm-operator{
+		color: @normal-text;
+	}
+	&.cm-variable{
+		color: @property;
+	}
+	&.cm-variable-2{
+		color: @variable-name;
+	}
+	&.cm-keyword{
+		font-weight: bolder;
+	}
+}
+.cm-m-css {
+	/* CSS, LESS */
+	&.cm-keyword{
+		color: @alert;
+		font-weight: bolder;
+	}
+	&.cm-atom, &.cm-qualifier{
+		color: @variable-name;
+		font-weight: bold;
+	}
+}
+.cm-m-javascript {
+	&.cm-property {
+		color: @keyword !important;
+		font-weight: normal;
+	}
+	&.cm-variable, &.cm-variable-2{
+		color: @variable-name;
+	}
+}
+.cm-m-xml {
+	/* HTML, XML */
+	&.cm-bracket {
+		/* each tags' “<” & “>” */
+		font-weight: bold;
+	}
+}
+.cm-m-sql{
+	&.cm-keyword{
+		font-weight: bolder;
+	}
+}
+.cm-m-yaml{ 
+	color: @string;
+	&.cm-atom{
+		color: @keyword;
+		font-weight: bolder;
+	}
+	&.cm-meta{
+		color: @normal-text;
+	}
+}
+.cm-m-go{ 
+	/* need to install https://github.com/devinceble/brackets-go */
+	&.cm-keyword{
+		font-weight: bold;
+		color: @keyword;
+	}
+}
+/* 
+ * Non-editor styling 
+ * *************************************/
+
+.image-view,
+.not-editor {
+	background-color: @background;
+}
+
+.view-pane .image-view {
+	color: @normal-text;
+}
