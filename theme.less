@@ -20,6 +20,7 @@
 @comment:	hsl(0, 32%, 60%);
 @foldgutter:	hsl(274, 38%, 45%);
 @string:	rgb(58, 124, 124);
+@define:	hsl(231, 67%, 47%);
 
 @hover-text:	hsl(256, 50%, 78%);
 @hover-background:hsl(256, 50%, 44%);
@@ -67,7 +68,10 @@
 	color: @property;
 	font-weight: bolder;
 }
-.cm-def, .cm-variable{
+.cm-def{
+	color: @define;
+}
+.cm-variable{
 	color: @variable-name;
 }
 .cm-variable-2, .cm-variable-3, .cm-operator, .cm-meta, .cm-bracket {
@@ -284,6 +288,10 @@
 		color: @keyword !important;
 		font-weight: normal;
 	}
+	&.cm-string.cm-property{
+		color: @variable-name !important;
+		font-weight: bolder;
+	}
 	&.cm-variable, &.cm-variable-2{
 		color: @variable-name;
 	}
@@ -292,6 +300,11 @@
 	/* HTML, XML */
 	&.cm-bracket {
 		/* each tags' “<” & “>” */
+		font-weight: bold;
+	}
+	&.cm-meta{
+		/* such as doctype */
+		color: @define;
 		font-weight: bold;
 	}
 }
